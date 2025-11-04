@@ -1,3 +1,24 @@
+<script setup>
+import { ref } from "vue"
+import Login from "./components/Login.vue"
+import SignUp from "./components/SignUp.vue"
+import Task from "./components/Task.vue"
+
+const section = ref("sign_up")
+
+function gotoLogin() {
+  section.value = 'login'
+}
+
+function gotoSignUp() {
+  section.value = 'sign_up'
+}
+
+function gotoTask() {
+  section.value = 'task'
+}
+</script>
+
 <template>
   <header class="banner">
     <h1><a href="#todo" class="taskLink">TODO!</a></h1>
@@ -17,20 +38,23 @@
   <main class="px-6 todo-app main">
     <header>
       <nav class="navbar">
-        <a class="loginLink" href="#login">登入</a>
-        <a class="signUpLink" href="#sign_up">註冊</a>
+        <a @click="gotoLogin" class="loginLink" href="#login">登入</a>
+        <a @click="gotoSignUp" class="signUpLink" href="#sign_up">註冊</a>
       </nav>
     </header>
 
     <section id="userSection">
       <!-- Login Section start -->
+      <Login v-if="section == 'login'"></Login>
       <!-- Login Section end -->
 
       <!-- Sign Up Section start -->
+      <SignUp v-if="section == 'sign_up'"></SignUp>
       <!-- Sign Up Section end -->
     </section>
 
     <!-- TODO Section start -->
+    <Task v-if="section == 'task'"></Task>
     <!-- TODO Section end -->
   </main>
 
