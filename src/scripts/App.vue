@@ -6,17 +6,9 @@ import Task from "./components/Task.vue"
 
 const section = ref("sign_up")
 
-function gotoLogin() {
-  section.value = 'login'
-}
-
-function gotoSignUp() {
-  section.value = 'sign_up'
-}
-
-function gotoTask() {
-  section.value = 'task'
-}
+const gotoLogin = () => section.value = 'login'
+const gotoSignUp = () => section.value = 'sign_up'
+const gotoTask = () => section.value = 'task'
 </script>
 
 <template>
