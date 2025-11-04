@@ -1,9 +1,15 @@
+<script setup>
+defineProps({
+  todo: String,
+})
+</script>
+
 <template>
   <li>
     <div class="item-content">
       <label>
         <input type="checkbox" />
-        <p class="content">我要學 Python</p>
+        <p class="content">{{ todo }}</p>
       </label>
     </div>
     <div class="item-control">

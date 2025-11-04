@@ -5,11 +5,17 @@ import SignUp from "./components/SignUp.vue"
 import Task from "./components/Task.vue"
 import TodoItem from "./components/TodoItem.vue"
 
-const section = ref("sign_up")
+const section = ref("task")
+const todos = ref([])
 
 const gotoLogin = () => section.value = 'login'
 const gotoSignUp = () => section.value = 'sign_up'
 const gotoTask = () => section.value = 'task'
+const addTask = (task) => {
+  if (task != '') {
+    todos.value.unshift(task)
+  }
+}
 </script>
 
 <template>
@@ -47,14 +53,14 @@ const gotoTask = () => section.value = 'task'
     </section>
 
     <!-- TODO Section start -->
-    <Task v-if="section == 'task'"></Task>
+    <Task @add_task="addTask" v-if="section == 'task'"></Task>
     <!-- TODO Section end -->
   </main>
 
   <section class="todo-list">
     <ul class="items">
       <!-- item start -->
-      <TodoItem></TodoItem>
+      <TodoItem v-for="todo in todos" :todo="todo"></TodoItem>
       <!-- item end -->
     </ul>
   </section>
