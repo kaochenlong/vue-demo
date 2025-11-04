@@ -3,8 +3,9 @@ import { ref } from "vue"
 import Login from "./components/Login.vue"
 import SignUp from "./components/SignUp.vue"
 import Task from "./components/Task.vue"
+import TodoItem from "./components/TodoItem.vue"
 
-const section = ref("sign_up")
+const section = ref("task")
 
 const gotoLogin = () => section.value = 'login'
 const gotoSignUp = () => section.value = 'sign_up'
@@ -53,20 +54,8 @@ const gotoTask = () => section.value = 'task'
   <section class="todo-list">
     <ul class="items">
       <!-- item start -->
-      <li>
-        <div class="item-content">
-          <label>
-            <input type="checkbox" />
-            <p class="content">我要學 Python</p>
-          </label>
-        </div>
-        <div class="item-control">
-          <a href="#" class="edit">Edit</a>
-          <a href="#" class="delete">Delete</a>
-        </div>
-      </li>
+      <TodoItem></TodoItem>
       <!-- item end -->
-
     </ul>
   </section>
   <footer>
