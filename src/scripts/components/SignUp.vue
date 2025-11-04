@@ -1,12 +1,30 @@
 <script setup>
+import axios from 'axios';
 import { ref } from 'vue';
+
+const emits = defineEmits(['login'])
 
 const email = ref("")
 const nickname = ref("")
 const password = ref("")
 
-function SignUp() {
-  // API
+async function SignUp() {
+  // if (email.value != '' && nickname.value != '' && password.value != '') {
+  //   const userData = {
+  //     user: {
+  //       email: email.value,
+  //       nickname: nickname.value,
+  //       password: password.value
+  //     }
+  //   }
+
+  //   try {
+  //     await axios.post('https://todoo.5xcamp.us/users', userData)
+  //     emits('login') // 換畫面
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 }
 </script>
 

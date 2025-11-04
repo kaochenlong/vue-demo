@@ -5,7 +5,7 @@ import SignUp from "./components/SignUp.vue"
 import Task from "./components/Task.vue"
 import TodoItem from "./components/TodoItem.vue"
 
-const section = ref("task")
+const section = ref("sign_up")
 
 const gotoLogin = () => section.value = 'login'
 const gotoSignUp = () => section.value = 'sign_up'
@@ -42,7 +42,7 @@ const gotoTask = () => section.value = 'task'
       <!-- Login Section end -->
 
       <!-- Sign Up Section start -->
-      <SignUp v-if="section == 'sign_up'"></SignUp>
+      <SignUp @login="gotoLogin" v-if="section == 'sign_up'"></SignUp>
       <!-- Sign Up Section end -->
     </section>
 
