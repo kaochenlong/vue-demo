@@ -1,8 +1,9 @@
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
+import { UserStore } from '@/scripts/stores/UserStore';
 
-const emits = defineEmits(['login'])
+const store = UserStore()
 
 const email = ref("")
 const nickname = ref("")
@@ -20,7 +21,7 @@ async function SignUp() {
 
     try {
       await axios.post('https://todoo.5xcamp.us/users', userData)
-      emits('login') // 換畫面
+      store.changeSection('login') // 換畫面
     } catch (err) {
       console.log(err);
     }

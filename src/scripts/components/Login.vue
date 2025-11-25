@@ -1,9 +1,9 @@
 <script setup>
 import axios from 'axios';
-
 import { ref } from 'vue'
+import { UserStore } from '@/scripts/stores/UserStore';
 
-const emits = defineEmits(['gototask'])
+const store = UserStore()
 
 const email = ref("")
 const password = ref("")
@@ -20,8 +20,8 @@ async function Login() {
     try {
       const result = await axios.post('https://todoo.5xcamp.us/users/sign_in', userData)
       const token = result.headers.authorization
-      localStorage.setItem("todo_token", token)
-      emits("gototask")
+      store.setUserData(token, email.value)
+      store.changeSection('task')
     } catch (err) {
       console.log(err);
     }

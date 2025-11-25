@@ -1,19 +1,18 @@
 <script setup>
 import { ref } from "vue"
-import Login from "./components/Login.vue"
-import SignUp from "./components/SignUp.vue"
-import Task from "./components/Task.vue"
-import TodoItem from "./components/TodoItem.vue"
-import { UserStore } from "./stores/UserStore"
+import Login from "%/Login.vue"
+import SignUp from "%/SignUp.vue"
+import Task from "%/Task.vue"
+import TodoItem from "%/TodoItem.vue"
+import { UserStore } from '@/scripts/stores/UserStore';
 
 const store = UserStore()
 
-const section = ref("task")
 const todos = ref([])
 
-const gotoLogin = () => section.value = 'login'
-const gotoSignUp = () => section.value = 'sign_up'
-const gotoTask = () => section.value = 'task'
+const gotoLogin = () => store.changeSection('login')
+const gotoSignUp = () => store.changeSection('sign_up')
+
 const addTask = (task) => {
   if (task != '') {
     todos.value.unshift(task)
@@ -47,16 +46,16 @@ const addTask = (task) => {
 
     <section id="userSection">
       <!-- Login Section start -->
-      <Login @gototask="gotoTask" v-if="section == 'login'"></Login>
+      <Login v-if="store.section == 'login'"></Login>
       <!-- Login Section end -->
 
       <!-- Sign Up Section start -->
-      <SignUp @login="gotoLogin" v-if="section == 'sign_up'"></SignUp>
+      <SignUp v-if="store.section == 'sign_up'"></SignUp>
       <!-- Sign Up Section end -->
     </section>
 
     <!-- TODO Section start -->
-    <Task @add_task="addTask" v-if="section == 'task'"></Task>
+    <Task v-if="store.section == 'task'"></Task>
     <!-- TODO Section end -->
   </main>
 
