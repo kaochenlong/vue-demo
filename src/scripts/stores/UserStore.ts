@@ -1,6 +1,8 @@
 import { ref } from "vue"
 import { defineStore } from "pinia"
 
+type SectionState = "task" | "login" | "sign_up"
+
 const UserStore = defineStore("user_store", () => {
   // States
   const email = ref("")
@@ -8,15 +10,13 @@ const UserStore = defineStore("user_store", () => {
   const section = ref("login")
 
   // Actions
-  const setUserData = (token, email) => {
+  const setUserData = (token: string, email: string): void => {
     localStorage.setItem("__todo_token__", token)
     localStorage.setItem("__todo_email__", email)
   }
 
-  const changeSection = (state = "login") => {
-    if (["task", "login", "sign_up"].includes(state)) {
-      section.value = state
-    }
+  const changeSection = (state: SectionState): void => {
+    section.value = state
   }
 
   return { email, token, section, setUserData, changeSection }

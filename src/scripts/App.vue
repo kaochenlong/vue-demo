@@ -10,7 +10,7 @@ const store = UserStore()
 
 const todos = ref([])
 
-const gotoLogin = () => store.changeSection('login')
+const gotoLogin = () => store.changeSection("login")
 const gotoSignUp = () => store.changeSection('sign_up')
 
 const addTask = (task) => {
