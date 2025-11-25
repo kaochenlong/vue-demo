@@ -4,6 +4,9 @@ import Login from "./components/Login.vue"
 import SignUp from "./components/SignUp.vue"
 import Task from "./components/Task.vue"
 import TodoItem from "./components/TodoItem.vue"
+import { UserStore } from "./stores/UserStore"
+
+const store = UserStore()
 
 const section = ref("task")
 const todos = ref([])
