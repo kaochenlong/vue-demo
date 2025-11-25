@@ -44,7 +44,7 @@ const addTask = (task) => {
 
     <section id="userSection">
       <!-- Login Section start -->
-      <Login v-if="section == 'login'"></Login>
+      <Login @gototask="gotoTask" v-if="section == 'login'"></Login>
       <!-- Login Section end -->
 
       <!-- Sign Up Section start -->

@@ -9,22 +9,22 @@ const nickname = ref("")
 const password = ref("")
 
 async function SignUp() {
-  // if (email.value != '' && nickname.value != '' && password.value != '') {
-  //   const userData = {
-  //     user: {
-  //       email: email.value,
-  //       nickname: nickname.value,
-  //       password: password.value
-  //     }
-  //   }
+  if (email.value != '' && nickname.value != '' && password.value != '') {
+    const userData = {
+      user: {
+        email: email.value,
+        nickname: nickname.value,
+        password: password.value
+      }
+    }
 
-  //   try {
-  //     await axios.post('https://todoo.5xcamp.us/users', userData)
-  //     emits('login') // 換畫面
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+    try {
+      await axios.post('https://todoo.5xcamp.us/users', userData)
+      emits('login') // 換畫面
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 </script>
 
